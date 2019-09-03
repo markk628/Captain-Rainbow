@@ -120,5 +120,5 @@ if __name__ == "__main__":
     running = True
     while running:
         selection = user_input(
-            "Press C to add to list, R to Read from list, P to display list, and Q to quit")
+            "Press C to add to list, R to Read from list, P to display list, U to update an item, D to delete an item, and Q to quit")
         running = select(selection)
