@@ -1,5 +1,3 @@
-print("Hello World")
-
 #integer = len()
 
 checklist = list()
@@ -27,20 +25,21 @@ def list_all_items():
         print(str(index) + list_item)
         index += 1
 
-#def mark_completed(index):
+def mark_completed(index):
+    update(index, " √ " + checklist[index])
 
 
 def select(function_code):
     try:
         # Create item
         if function_code.upper() == "C":
-            input_item = user_input("Input item:")
+            input_item = user_input("Input item: ")
             create(input_item)
             return True
 
         # Read item
         elif function_code.upper() == "R":
-            item_index = int(user_input("Index Number?"))
+            item_index = int(user_input("Index Number?: "))
             if item_index > len(checklist):
                 print("Try another number")
             #elif item_index = str(user_input("Index Number?"))
@@ -61,14 +60,19 @@ def select(function_code):
             return False
 
         elif function_code.upper() == "U":
-            item_index = int(user_input("Index Number"))
-            item_update = user_input("What you want fam")
+            item_index = int(user_input("Index Number: "))
+            item_update = user_input("What you want fam: ")
             update(item_index, item_update)
             return True
 
         elif function_code.upper() == "D":
-            item_index = int(user_input("Index Number"))
+            item_index = int(user_input("Index Number: "))
             destroy(item_index)
+            return True
+
+        elif function_code.upper() == "M":
+            item_index = int(user_input("Index Number: "))
+            mark_completed(int(item_index))
             return True
 
         # Catch all
@@ -120,5 +124,5 @@ if __name__ == "__main__":
     running = True
     while running:
         selection = user_input(
-            "Press C to add to list, R to Read from list, P to display list, U to update an item, D to delete an item, and Q to quit")
+            "Press C to add to list, R to Read from list, P to display list, U to update an item, D to delete an item, M to mark complete, and Q to quit: ")
         running = select(selection)
